@@ -10,13 +10,13 @@ public class StudentTest {
 		
 		StudentDAO dao = new StudentDAOImpl();
 		
-		Student s1 = new Student();
-		s1.setsId(1);
-		s1.setsName("Rahul");
-		s1.setsGender("M");
-		s1.setsMarks(97);
-		
-		dao.saveStudents(s1);
+//		Student s1 = new Student();
+//		s1.setsId(1);
+//		s1.setsName("Rahul");
+//		s1.setsGender("M");
+//		s1.setsMarks(97);
+//		
+//		dao.saveStudents(s1);
 		
 //		Student s2 = new Student();
 ////		s2.setsId(2);
@@ -33,6 +33,17 @@ public class StudentTest {
 //		s3.setsMarks(95);
 //		
 //		dao.saveStudents(s3);
+		
+		Student stu = dao.loadStudents(1);
+		System.out.println(stu);
+		System.out.println();
+		
+		stu = dao.updateStudent(1, 99);
+		System.out.println(stu);
+		System.out.println();
+		
+		dao.deleteStudent(1);
+		
 	}
 
 }

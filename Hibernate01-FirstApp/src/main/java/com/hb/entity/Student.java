@@ -31,4 +31,10 @@ public class Student {
 	public void setsMarks(Integer sMarks) {
 		this.sMarks = sMarks;
 	}
+	
+	@Override
+	public String toString() {
+		return "Student [sId=" + sId + ", sName=" + sName + ", sGender=" + sGender + ", sMarks=" + sMarks + "]";
+	}
+	
 }

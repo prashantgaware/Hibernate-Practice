@@ -40,4 +40,56 @@ public class StudentDAOImpl implements StudentDAO {
 		}
 	}
 
+	@Override
+	public Student loadStudents(int id) {
+		Session session = factory.openSession();
+		
+//		Student student = session.get(Student.class, id);
+		Student student = session.load(Student.class, id);
+		
+//		session.close();
+		return student;
+		
+	}
+	
+	@Override
+	public Student updateStudent(int id, int marks) {
+
+		Session session =factory.openSession();
+		Student s = session.get(Student.class, id);
+		Transaction t = session.beginTransaction();
+		
+		try {
+			s.setsMarks(marks);
+			session.update(s);
+			t.commit();
+			System.out.println("Object is updated");
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("Object is failed to update");
+		} finally {
+			session.close();
+		}
+		
+		return s;
+	}
+	
+	@Override
+	public void deleteStudent(int id) {
+		Session session =factory.openSession();
+		Student s = session.get(Student.class, id);
+		Transaction t = session.beginTransaction();
+		
+		try {
+			session.delete(s);
+			t.commit();
+			System.out.println("Object is deleted");
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("Object is failed to delete");
+		} finally {
+			session.close();
+		}
+	}
+
 }
